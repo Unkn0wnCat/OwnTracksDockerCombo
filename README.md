@@ -18,7 +18,7 @@ cp .env.dist .env
 nano .env
 ```
 
-Make sure to checkout the instructions in `./nginx/with_http_basic` to see how to setup NGINX.
+Make sure to checkout the instructions in [`./nginx/with_http_basic`](https://github.com/Unkn0wnCat/OwnTracksDockerCombo/tree/master/nginx/with_http_basic) to see how to setup NGINX.
 
 ## Running & Controlling the Containers
 
