@@ -1,0 +1,34 @@
+version: "3.7"
+services:
+  recorder:
+    image: owntracks/recorder
+    env_file: .env
+    restart: unless-stopped
+    volumes:
+      - "recorder_store:/store"
+    ports:
+      - "8083:8083"
+    networks:
+      - otnetwork
+
+  frontend:
+    image: owntracks/frontend
+    env_file: .frontend.env
+    ports:
+      - "8084:80"
+    volumes:
+      - ./frontend-config.js:/usr/share/nginx/html/config/config.js
+    restart: unless-stopped
+    depends_on:
+      - recorder
+    networks:
+      - otnetwork
+
+volumes:
+  recorder_store:
+
+networks:
+  otnetwork:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: br-owntracksrec
